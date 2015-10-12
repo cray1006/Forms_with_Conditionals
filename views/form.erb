@@ -1,12 +1,16 @@
-<h1>State List</h1>
+<h1>Submission Form</h1>
 
-<p>here is a list of states...</p>
-
-<select>
-	<% @states.each do |x| %>
-	<option value = <%= x[:id]%> > <%= x[:name]%> </option>
-	<%end%>
-</select>
+<form method = "post">
+	<p>Full Name<br><input type = "text" name = "full_name"></p>
+	<p>City<br><input type = "text" name = "city"></p>
+	<p>here is a list of states...<br>
+	<select>
+		<% @states.each do |x| %>
+		<option value = <%= x[:id]%> > <%= x[:name]%> </option>
+		<%end%>
+	</select></p>
+	<p>Zip<br><input type = "text" name = "zip"></p>
+</form>
 
 <!-- iterate through each state in the array and put them into list items individually -->
 
