@@ -2,14 +2,16 @@
 
 <form method = "post">
 	<p>Full Name<br><input type = "text" name = "full_name"></p>
+	<p>Address<br><textarea rows = "4" cols = "50" name = "address"></textarea></p>
 	<p>City<br><input type = "text" name = "city"></p>
-	<p>here is a list of states...<br>
-	<select>
+	<p>State<br>
+	<select name = "state">
 		<% @states.each do |x| %>
 		<option value = <%= x[:id]%> > <%= x[:name]%> </option>
 		<%end%>
 	</select></p>
 	<p>Zip<br><input type = "text" name = "zip"></p>
+	<p><input type = "checkbox" value = "1">I agree that Ruby is awesome.</p>
 </form>
 
 <!-- iterate through each state in the array and put them into list items individually -->
