@@ -1,22 +1,40 @@
 <h1>Submission Form</h1>
 
 <form method = "post">
-	<p>Full Name<br><input type = "text" name = "full_name"></p>
+	<%if params.has_key?("submit")%>
+		<p>Form has been submitted</p>
+		<%name = params.fetch("full_name", "")%>
+		<%a = params.fetch("address", "")%>
+		<%c = params.fetch("city", "")%>
+		<%s = params.fetch("state", "")%>
+		<%z = params.fetch("zip", "")%>
+		<%ch = params.fetch("check", "0")%>
+	<%end%>
 	
-	<p>Address<br><textarea rows = "4" cols = "50" name = "address"></textarea></p>
+	<p>Full Name<br><input type = "text" name = "full_name" value = <%= name%> ></p>
 	
-	<p>City<br><input type = "text" name = "city"></p>
+	<p>Address<br><textarea rows = "4" cols = "50" name = "address"><%= a%></textarea></p>
+	
+	<p>City<br><input type = "text" name = "city" value = <%= c%> ></p>
 	
 	<p>State<br>
 	<select name = "state">
 		<% @states.each do |x| %>
-		<option value = <%= x[:id]%> > <%= x[:name]%> </option>
+			<%if x[:id] == s%>
+				<option value = <%= x[:id]%> selected = "selected"> <%= x[:name]%> </option>
+			<%else%>
+				<option value = <%= x[:id]%>> <%= x[:name]%> </option>
+			<%end%>
 		<%end%>
 	</select></p>
 	
-	<p>Zip<br><input type = "text" name = "zip"></p>
+	<p>Zip<br><input type = "text" name = "zip" value = <%= z%> ></p>
 	
-	<p><input type = "checkbox" value = "1" name = "check">I agree that Ruby is awesome.</p>
+	<%if ch == "1"%>
+		<p><input type = "checkbox" value = "1" name = "check" checked>I agree that Ruby is awesome.</p>
+	<%else%>
+		<p><input type = "checkbox" value = "1" name = "check">I agree that Ruby is awesome.</p>
+	<%end%>
 	
 	<input type = "submit" value = "Submit" name = "submit">
 </form>
